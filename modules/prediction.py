@@ -154,6 +154,9 @@ def predict_disease(patient_symptoms, model):
     # Get prediction and probability
     prediction = model.predict([input_vector])[0]  # This will now return the disease name directly
     
+    # Clean prediction string by stripping whitespace
+    prediction = str(prediction).strip()
+    
     # Get confidence if model supports predict_proba
     try:
         proba = model.predict_proba([input_vector])[0]
@@ -162,7 +165,7 @@ def predict_disease(patient_symptoms, model):
     except:
         confidence = 95.0  # Default confidence if model doesn't support probabilities
     
-    # Use the prediction directly since it's now the disease name
+    # Use the cleaned prediction
     predicted_disease = DISEASES_LIST[prediction]
     
     return predicted_disease, confidence
