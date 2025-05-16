@@ -39,15 +39,8 @@ def main():
         options=symptoms_list,
         help="Select multiple symptoms you are experiencing"
     )
-    
-    # Advanced options
-    with st.expander("Advanced Options"):
-        model_choice = st.selectbox(
-            "Choose prediction model:", 
-            ["Random Forest", "SVC", "KNeighbors", "Gradient Boosting", "MultinomialNB"],
-            index=0
-        )
-    
+   
+    model_choice="Random Forest"
     # Prediction section
     if st.button("Analyze Symptoms"):
         if len(selected_symptoms) < 1:
